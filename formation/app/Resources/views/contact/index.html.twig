@@ -1,0 +1,61 @@
+{%  extends 'parent.html.twig' %}
+    {% block body  %}
+        <h1> Liste des Contact </h1>
+        {#
+            app : variable globale donnant accès à des informations de l'application flashes(clé) :
+            raccourci pour accéder aux messages flash de la session
+            Formulaire
+
+        #}
+        {% for value in app.flashes('notice') %}
+            <p class="alert alert-success"> {{ value }}</p>
+        {% endfor %}
+        <a href="{{ url('contact.form') }}" class="btn btn-info"> Ajouter </a>
+
+        <table class = "table table-striped">
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Loisirs</th>
+                <th>Système d Exploitation</th>
+                <th></th>
+                <th></th>
+            </tr>
+                {% for value in results %}
+                    <tr>
+                        <td>{{ value.id }}</td>
+                        <td>{{ value.nom }}</td>
+                        <td>{{ value.prenom }}</td>
+                        <td>{{ value.email }}</td>
+                        <td>{{ value.message }}</td>
+                        <td>{# hobbies est un array #}
+                        {% for valueHobbies in value.hobbies %}
+                            {{ valueHobbies.nom }}
+
+                        {% endfor %}
+                        </td>
+                        <td>
+                            {% if value.operatingSystem.name is defined  %}
+                                {{ value.operatingSystem.name }}
+                            {% else %}
+                                <p clas="alert alert-danger"> Inconnu</p>
+                            {% endif %}
+                        </td>
+
+
+                        <td> <a href="{{ url('contact.update',{'id' : value.id } ) }}" class="btn btn-warning"> Modifier </a> </td>
+                        <td> <a href="{{ url('contact.delete',{'id' : value.id} ) }}" class="btn btn-danger"> Supprimer </a> </td>
+                    </tr>
+                {% endfor %}
+        </table>
+
+
+
+
+
+
+
+
+    {% endblock %}

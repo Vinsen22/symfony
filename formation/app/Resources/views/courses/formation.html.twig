@@ -1,0 +1,25 @@
+{%  extends 'parent2.html.twig' %}
+    {% block body  %}
+
+
+        <h1></h1>
+
+        <table class = "table table-striped">
+            <a href="{{ url('courses') }}" class="btn btn-primary"> Revenir à la page précédente </a> </td>
+            <br/>
+            <tr>
+                <th>Formations</th>
+                <th>Modules</th>
+            </tr>
+            {% for value in results %}
+                <tr>
+                    <td> {{ value.name }} </td>
+                    <td>
+                        {% for module in value.Modules %}
+                            {{ module.name }}
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endblock %}

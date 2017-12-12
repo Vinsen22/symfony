@@ -1,0 +1,50 @@
+{% extends 'parent2.html.twig' %}
+{% block body %}
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/fontawesome-all.min.css" />
+    </head>
+    <body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <ul class="nav nav-pills">
+                    <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-home"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h1>{{ name }}</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                {% for value in results %}
+                    {% for livre in value.livres %}
+                    <div class="col-sm-4">
+                        <div class="thumbnail">
+                                <img src="http://dummyimage.com/400x400/000/fff.jpg&text=book{{ livre.id }}" alt="cover" class="img-fluid" />
+                                <div class="caption">
+                                    <h3>{{ livre.titre }}</h3>
+                                    <p>{{ livre.auteur }}</p>
+                                    <p><a href="{{ url('livre_name',{'id':livre.id}) }}" class="btn btn-primary">  Details </a></p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+                    {# Fin de la boucle #}
+                </div>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>
+
+{% endblock %}

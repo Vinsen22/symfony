@@ -1,0 +1,43 @@
+{% extends 'parent2.html.twig' %}
+{% block body %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/fontawesome-all.min.css" />
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="#" class="nav-link"><i class="fas fa-home"></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1>{{ title.titre }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="card">
+            <img src="http://dummyimage.com/400x400/000/fff.jpg&text=book{{ id }}" alt="cover" class="img-fluid card-img-left" />
+            <div class="card-body">
+                {% for value in results %}
+                    <p><strong class="text-uppercase">Author : </strong> {{ value.auteur }}</p>
+                    <p><strong class="text-uppercase">Description :</strong> {{ value.description }}</p>
+                     {% for valeur in value.categorie %}
+                        <p><strong class="text-uppercase">Category :</strong> {{ valeur.name }} </p>
+                     {% endfor %}
+                    <p><strong class="text-uppercase">Publication date :</strong> {{ value.datePubli }}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}

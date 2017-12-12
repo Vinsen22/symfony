@@ -1,0 +1,24 @@
+{%  extends 'parent2.html.twig' %}
+    {% block body  %}
+
+
+        <h1>Formations</h1>
+
+        <table class = "table table-striped">
+            <tr>
+                <th>
+                    Nom des Formations
+                </th>
+            </tr>
+          {% for valeur in results %}
+              <tr>
+                  <td>
+                      <a href ="{{ url('courses_modules',{'formation' : valeur.name  }) }}"> {{ valeur.name }}</a>
+                  </td>
+              </tr>
+          {% endfor %}
+
+
+
+        </table>
+    {% endblock %}

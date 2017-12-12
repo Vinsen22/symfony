@@ -1,0 +1,52 @@
+{%  extends 'parent.html.twig' %}
+    {% block body  %}
+        <h1> Contact </h1>
+        {#
+            Formulaire
+                form_start : <form>
+                form_end : </form>
+                form_label : <label>
+                form_widget : champ  || Permet d'affocher le type de données
+                il faut créer le bouton submit
+                le nom des champs provient de la classe du formulaire Form/...Type
+                attr: attribut HTML
+            #}
+        {{ form_errors(form.nom) }}
+        {{ form_errors(form.prenom) }}
+        {{ form_errors(form.email) }}
+        {{ form_errors(form.message) }}
+        {{ form_errors(form.hobbies) }}
+        {{ form_errors(form.operating_system) }}
+
+        {{ form_start(form, { 'attr' : { 'novalidate' : 'novalidate'}}) }} {# Permet de rajouter un attribut html dans la balise form #}
+
+        <p>
+            {{ form_label (form.nom, 'Nom : ') }}
+            {{ form_widget (form.nom ) }}
+        </p>
+        <p>
+            {{ form_label (form.nom, 'Prenom : ') }}
+            {{ form_widget (form.prenom ) }}
+        </p>
+        <p>
+            {{ form_label (form.email, 'Email : ') }}
+            {{ form_widget (form.email ) }}
+        </p>
+        <p>
+            {{ form_label (form.message, 'Message : ') }} <br>
+            {{ form_widget (form.message ) }}
+        </p>
+        <p>
+            {{ form_label (form.hobbies, 'Hobbies : ') }} <br>
+            {{ form_widget (form.hobbies ) }}
+        </p>
+        <p>
+            {{ form_label (form.operating_system, 'Système d Exploitation : ') }} <br>
+            {{ form_widget (form.operating_system ) }}
+        </p>
+
+        <p>
+            <input type ="submit" class="btn btn-primary">
+        </p>
+        {{ form_end( form) }}
+    {% endblock %}

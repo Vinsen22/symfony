@@ -1,0 +1,15 @@
+{% extends 'parent.html.twig' %}
+
+{% block body %}
+
+
+
+       {{detail.prenom  ~ " " ~ detail.nom ~ " "}}<br>
+
+   <img src="{{ asset('img/' ~ detail.photo ) }}" alt="">
+
+
+    <br>
+    <hr>
+
+{% endblock %}
